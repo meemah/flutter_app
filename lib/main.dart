@@ -51,7 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 0,
         title: FlatButton(
           onPressed: (){
-            _confirmOrderModalBottomSheet(totalPrice: "$_currency$price", numOfCups: "x $_cupsCounter");
+            //TODO: Uncomment the _confirmOrderModalBottomSheet() method to show summary of order
+           // _confirmOrderModalBottomSheet(totalPrice: "$_currency$price", numOfCups: "x $_cupsCounter");
           },
           child: Text("Buy Now",style: TextStyle(color: Colors.black87),),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Colors.blue))
