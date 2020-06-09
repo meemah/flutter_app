@@ -16,7 +16,7 @@ TODOs:
 ## Screenshots
 
 <p align="center">
-  <img src="https://github.com/devmike01/flutter_app/blob/master/device-2020-06-09-205714.png" width="350" title="hover text">
+  <img src="https://github.com/devmike01/flutter_app/blob/master/device-2020-06-09-205714.png" width="350" height="400" title="hover text">
   <img src="https://github.com/devmike01/flutter_app/blob/master/device-2020-06-09-205828.png" width="350" alt="accessibility text">
 </p>
 
