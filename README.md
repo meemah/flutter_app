@@ -17,7 +17,7 @@ TODOs:
 
 <p align="center">
   <img src="https://github.com/devmike01/flutter_app/blob/master/device-2020-06-09-205714.png" width="350" height="400" title="hover text">
-  <img src="https://github.com/devmike01/flutter_app/blob/master/device-2020-06-09-205828.png" width="250" alt="accessibility text">
+  <img src="https://github.com/devmike01/flutter_app/blob/master/device-2020-06-09-205828.png" width="380" height="400" alt="accessibility text">
 </p>
 
 Further instructions will be sent to you via email
