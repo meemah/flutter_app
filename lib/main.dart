@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           )),
           Padding(padding: EdgeInsets.all(10),),
-          Expanded(flex: 0,child: Text("Espresso Latte",
+          Expanded(flex: 0,child: Text("Caffè Americano",
             style: TextStyle(fontWeight: FontWeight.bold,
               fontSize: 30),)),
           Padding(padding: EdgeInsets.all(6),),
