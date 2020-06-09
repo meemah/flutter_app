@@ -4,7 +4,7 @@ A new Flutter application that let user oder bag of Caffè Americano
 
 ## Getting Started
 
-This project is meant to evaluate your skill as a Flutter developer.
+This project is meant to evaluate your skill as a beginner Flutter developer.
 
 TODOs:
 1. Clone this repository
