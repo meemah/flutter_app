@@ -51,8 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 0,
         title: FlatButton(
           onPressed: (){
-            //TODO: Uncomment the _confirmOrderModalBottomSheet() method to show summary of order
-            //_confirmOrderModalBottomSheet(totalPrice: "$_currency$price", numOfCups: "x $_cupsCounter");
+            
+            _confirmOrderModalBottomSheet(totalPrice: "$_currency$price", numOfCups: "x $_cupsCounter");
           },
           child: Text("Buy Now",style: TextStyle(color: Colors.black87),),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Colors.blue))
@@ -60,12 +60,12 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           InkWell(
             onTap: (){
-              //TODO: Uncomment the setState() function to clear the price and cups
-              //TODO: Change the 'price' to 0 when this button is clicked
-              //setState(() {
-              this.price = -1;
-              this._cupsCounter =0;
-              // });
+              
+              
+              setState(() {
+              this.price = 0;
+              this._cupsCounter = 0;
+              });
             },
             child: Icon(Icons.clear),
           ),
@@ -163,12 +163,15 @@ class _MyHomePageState extends State<MyHomePage> {
             width: double.maxFinite,
             height: 70,
             child: FlatButton(onPressed: (){
-              //TODO: Currently _cupsCounter only show 1 when this button is clicked.
-              // TODO: Increment the _cupsCounter when 'Add to Bag' button is clicked'
-              //TODO: Call setState((){}) method to update both price and cups counter when 'Add to Bag' button is clicked
-
-              this._cupsCounter = 1;
+              
+              
+              
+              setState(() {
+                this._cupsCounter += 1;
               this.price += int.parse(_coffeePrice);
+              });
+
+              
             }, child: Center(child: Text("Add to Bag",
               style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),)
               ,),
