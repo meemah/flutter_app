@@ -1,0 +1,67 @@
+{
+	"categories": [
+		{
+			"name": "Capucinno",
+			"contents": [
+				{
+					"name": "Capucinno0",
+					"price": "100",
+					"image": "images/coffee1.jpg"
+				},
+				{
+					"name": "Capucinno1",
+					"price": "200",
+					"image": "images/coffee2.jpg"
+				},
+				{
+					"name": "Capucinno2",
+					"price": "250",
+					"image": "images/coffee3.jpg"
+				}
+			]
+		},
+		{
+			"name": "Espresso",
+			"contents": [
+				{
+					"name": "Espressoo0",
+					"price": "150",
+					"image": "images/coffee2.jpg"
+				},
+				{
+					"name": "Espresso1",
+					"price": "350",
+					"image": "images/coffee4.jpg"
+				},
+				{
+					"name": "Espresso2",
+					"price": "450",
+					"image": "images/coffee5.jpg"
+				}
+
+			]
+		},
+		{
+			"name": "Latte",
+			"contents": [
+				{
+					"name": "Latte0",
+					"price": "50",
+					"image":"images/coffee4.jpg"
+				},
+				{
+					"name": "Latte1",
+					"price": "100",
+					"image":"images/coffee1.jpg"
+				},
+				{
+					"name": "Latte2",
+					"price": "150",
+					"image":"images/coffee3.jpg"
+				}
+			]
+		}
+
+		
+	]
+}

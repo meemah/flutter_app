@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/coffee_model.dart';
+
 
 class DetailScreen extends StatefulWidget {
   // final String title;
@@ -111,7 +111,7 @@ class _DetailScreenState extends State<DetailScreen> {
             Padding(
               padding: EdgeInsets.all(10),
             ),
-            Expanded(
+            Expanded( 
                 flex: 0,
                 child: Text(
                   widget.coffeeName,
