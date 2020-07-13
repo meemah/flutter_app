@@ -10,6 +10,8 @@ import 'dart:convert';
 import 'package:flutterapp/json_model.dart';
 
 class HomeScreen extends StatefulWidget {
+
+  static const route = "/home";
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -100,19 +102,26 @@ class _HomeScreenState extends State<HomeScreen> {
                         var image = contents.image;
                         var price = contents.price;
 
+                        
+
                         return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return DetailScreen(
-                                  coffeeName: name,
-                                  coffeeImage: image,
-                                  coffeePrice: price,
-                                );
-                              }),
-                            );
-                          },
+                            onTap: (){
+                              Navigator.pushNamed(context, DetailScreen.route, arguments:contents);
+                            },
+
+                          // onTap: () {
+                          //   Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(builder: (context) {
+                          //       return DetailScreen(
+                          //         contents: contents,
+                          //         // coffeeName: name,
+                          //         // coffeeImage: image,
+                          //         // coffeePrice: price,
+                          //       );
+                          //   //   }),
+                          //   );
+                          // },
                           child: CoffeCard(
                               coffeeName: name,
                               coffeeImage: image,

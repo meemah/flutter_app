@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/json_model.dart';
+import 'payment_screen.dart';
 
 
 class DetailScreen extends StatefulWidget {
-  // final String title;
-  final String coffeeName;
-  final String coffeePrice;
-  final String coffeeImage;
 
-  const DetailScreen(
-      {Key key, this.coffeeName, this.coffeePrice, this.coffeeImage})
-      : super(key: key);
+   static const route = "/detail";
+
+  
+
+  
+  // // final String title;
+  // final String coffeeName;
+  // final String coffeePrice;
+  // final String coffeeImage;
+
+  // const DetailScreen(
+  //     {Key key, this.coffeeName, this.coffeePrice, this.coffeeImage})
+  //     : super(key: key);
 
   @override
   _DetailScreenState createState() => _DetailScreenState();
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  Contents contents;
   int _selectedPosition = -1;
 
   String _coffeePrice = "0";
@@ -30,6 +39,8 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+   contents = ModalRoute.of(context).settings.arguments;
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -101,7 +112,8 @@ class _DetailScreenState extends State<DetailScreen> {
                       width: double.maxFinite,
                       height: 350,
                       child: Image.asset(
-                        widget.coffeeImage,
+                         contents.image,
+                        // widget.coffeeImage,
                         // "images/cup_of_coffee.png",//image
                         height: 300,
                       ),
@@ -114,7 +126,8 @@ class _DetailScreenState extends State<DetailScreen> {
             Expanded( 
                 flex: 0,
                 child: Text(
-                  widget.coffeeName,
+                  contents.name,
+                  // widget.coffeeName,
                   // "Caffè Americano",//Name
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 )),
@@ -139,53 +152,59 @@ class _DetailScreenState extends State<DetailScreen> {
               width: double.maxFinite,
               alignment: Alignment.center,
               child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  RichText(
-                    text: TextSpan(
-                        text: _currency,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            color: Colors.black87),
-                        children: [
-                          TextSpan(
-                            text: _coffeePrice,
-                            style: TextStyle(
-                                fontSize: 50, fontWeight: FontWeight.bold),
-                          )
-                        ]),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 15),
-                  ),
-                  ListView.builder(
-                    itemBuilder: (context, index) {
-                      var cupPrice = int.parse(widget.coffeePrice);
-                      return InkWell(
-                        child: _coffeeSizeButton(_selectedPosition == index,
-                              index == 0 ? "S" : index == 1 ? "M" : "L"),
-                        onTap: () {
-                          setState(() {
-                            this._coffeePrice = index == 0
-                                ? "$cupPrice"
-                                : index == 1
-                                    ? "${cupPrice * 2}"
-                                    : "${cupPrice * 3}";
-                            // index == 0 ? "300" : index == 1 ? "600" : "900";
-                            _selectedPosition = index;
-                          });
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                          text: _currency,
+                          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 25,
+              color: Colors.black87),
+                          children: [
+                            TextSpan(
+              text: _coffeePrice,
+              style: TextStyle(
+                  fontSize: 50, fontWeight: FontWeight.bold),
+                            )
+                          ]),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 15),
+                    ),
+                    Expanded(
+                                          child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          var cupPrice = int.parse(
+                            
+                            contents.price
+                            
+                            );
+                          return InkWell(
+                              child: _coffeeSizeButton(_selectedPosition == index,
+                index == 0 ? "S" : index == 1 ? "M" : "L"),
+                              onTap: () {
+                                setState(() {
+              this._coffeePrice = index == 0
+                  ? "$cupPrice"
+                  : index == 1
+                        ? "${cupPrice * 2}"
+                        : "${cupPrice * 3}";
+              // index == 0 ? "300" : index == 1 ? "600" : "900";
+              _selectedPosition = index;
+                                });
+                              },
+                            );
                         },
-                      );
-                    },
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 3,
-                    shrinkWrap: true,
-                  ),
-                ],
-              ),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 3,
+                        shrinkWrap: true,
+                      ),
+                    ),
+                  ],
+                ),
             ),
             Container(
               margin: EdgeInsets.only(top: 30),
@@ -288,7 +307,10 @@ class _DetailScreenState extends State<DetailScreen> {
                     _getEstimate(totalPrice, numOfCups),
                     Expanded(
                       child: FlatButton(
-                        onPressed: () {},
+                        onPressed: () {
+                         // Navigate to payment
+                         Navigator.pushNamed(context, PaymentScreen.route,arguments: totalPrice);
+                        },
                         child: Text(
                           "Check Out",
                           style: TextStyle(color: Colors.black87),
@@ -311,7 +333,8 @@ class _DetailScreenState extends State<DetailScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Image.asset(
-          widget.coffeeImage,
+          contents.image,
+          // widget.coffeeImage,
           // "images/cup_of_coffee.png",
           height: 70,
           width: 50,

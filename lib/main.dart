@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/Screens/detail_screen.dart';
 
 import 'package:flutterapp/Screens/home_screen.dart';
+import 'package:flutterapp/Screens/payment_screen.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -17,7 +20,15 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      initialRoute: HomeScreen.route,
+      routes: {
+         HomeScreen.route: (context) => HomeScreen(),
+        DetailScreen.route: (context)=>DetailScreen(),
+        PaymentScreen.route: (context)=>PaymentScreen()
+      },
+      // home: PaymentScreen(),
+      
+      // HomeScreen(),
     );
   }
 }
