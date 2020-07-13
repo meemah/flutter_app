@@ -7,15 +7,18 @@ class PaymentScreen extends StatefulWidget {
 }
 
 List<String> paymentType = ["Paypal", "Credit", "Wallet"];
-// rgb(114, 98, 231)
-// Color primaryColor = Color.fromRGBO(242, 174, 163, 1);
-// Color primaryColorLight = Color.fromRGBO(242, 174, 163, 1);
-// rgb(231, 232, 236)
+
 const kBoldText = TextStyle(fontWeight: FontWeight.bold);
-Color primaryColor = Color.fromRGBO(114, 98, 231, 1);
-Color primaryColorLight = Color.fromRGBO(114, 98, 231, 0.8);
+// Color primaryColor = Color.fromRGBO(114,98,230,1);
+// ( 238,232,232,1);
+// Color primaryColor = Color.fromRGBO(114, 98, 231, 1);
+// Color primaryColorLight = Color.fromRGBO(114, 98, 231, 0.8);
+Color primaryColor = Color(0xff795548);
+Color primaryColorLight = Color(0xffa1887f);
+
 Color backgroundColor = Color.fromRGBO(231, 232, 236, 1);
 bool isSwitched = false;
+
 
 
 String totalPrice;
@@ -72,7 +75,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             return Padding(
                               padding: const EdgeInsets.only(left: 8.0),
                               child: MaterialButton(
-                                focusColor: primaryColorLight,
+                                hoverColor: primaryColor,
                                 onPressed: () {
                                   
                                 },
@@ -81,13 +84,15 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Row(
+                                  mainAxisAlignment:  MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     
                                     Text(
                                       paymentType[index],
                                       style: TextStyle(color: Colors.white),
                                     ),
-                                    Icon(Icons.arrow_drop_down),
+                                    SizedBox(width:5),
+                                    Icon(Icons.check_circle_outline,color: Colors.white,),
                                   ],
                                 ),
                               ),

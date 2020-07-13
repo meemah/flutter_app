@@ -5,13 +5,8 @@ class CoffeCard extends StatelessWidget {
   final coffeeImage;
   final coffeePrice;
   final coffeeSubtext;
-// rgb(242, 174, 163)
-//  Color brown = Color.fromRGBO(242, 174, 163,0);
-  // Color blackContainer =  Color.fromRGBO(37, 34, 44,0);
-  // black = rgb(37, 34, 44)
-//  Color greySign =  Color.fromRGBO(146, 144, 148,0);
-  // rgb(146, 144, 148)
 
+ 
   const CoffeCard(
       {Key key,
       this.coffeeName,

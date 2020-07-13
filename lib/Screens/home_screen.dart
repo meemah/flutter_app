@@ -109,19 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.pushNamed(context, DetailScreen.route, arguments:contents);
                             },
 
-                          // onTap: () {
-                          //   Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(builder: (context) {
-                          //       return DetailScreen(
-                          //         contents: contents,
-                          //         // coffeeName: name,
-                          //         // coffeeImage: image,
-                          //         // coffeePrice: price,
-                          //       );
-                          //   //   }),
-                          //   );
-                          // },
+                          
                           child: CoffeCard(
                               coffeeName: name,
                               coffeeImage: image,
@@ -173,10 +161,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 15.0),
                                     child: Text(
-                                      // categoriesList1.categories[index].name
+                                      
                                       categoriesList1[index].name,
                                       style: TextStyle(
-                                        // fontWeight: FontWeight.w600,
+                                        
                                         fontWeight: currentItem == index
                                             ? FontWeight.w600
                                             : FontWeight.w200,
@@ -184,14 +172,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                             currentItem == index ? 22 : 15,
                                         color: currentItem == index
                                             ? Colors.black
-                                            : Colors.grey,
+                                            : Colors.black38,
                                       ),
                                     ),
                                   ),
                                 );
                               },
                               itemCount: categoriesList1.length
-                              // itemCount: categoriesList1.categories.length
+                             
                               ),
                         ),
                       ),
