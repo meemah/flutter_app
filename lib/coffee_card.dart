@@ -14,6 +14,7 @@ class CoffeCard extends StatelessWidget {
       this.coffeePrice,
       this.coffeeSubtext})
       : super(key: key);
+      
 
   @override
   Widget build(BuildContext context) {
@@ -23,93 +24,93 @@ class CoffeCard extends StatelessWidget {
         var containerHeight = constraints.maxHeight;
         
         return Stack(
-          overflow: Overflow.visible,
-          children: <Widget>[
-            Container(
-              
-              width: 260,
-              height: 330,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(45),
-                ),
-              ),
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(45),
-                topRight: Radius.circular(45),
-              ),
-              child: Image.asset(
-                coffeeImage,
-                width: 260,
+            overflow: Overflow.visible,
+            children: <Widget>[
+              Container(
                 
-                fit: BoxFit.contain,
-              ),
-            ),
-            Positioned(
-              bottom: 45,
-              left: 25,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    coffeeName,
-                    style: TextStyle(
-                        color: Color.fromRGBO(242, 174, 163, 1),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    coffeeSubtext,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 28,
-                        wordSpacing: 1.4),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              bottom: containerHeight / 90,
-              right: containerWidth / 10,
-             
-              child: Container(
-                child: Center(
-                  child: RichText(
-                    text: TextSpan(
-                      children: <TextSpan>[
-                        TextSpan(text:"₦",style:TextStyle(
-                            color: Color.fromRGBO(146, 144, 148,1)
-                        ),
-                        ),
-                        TextSpan(
-                          text: coffeePrice,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold)
-                        )
-                      ]
-                    ),
-                  ),
-
-                 
-                ),
-                width: 65,
-                height: 50,
+                width: 260,
+                height: 330,
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(37, 34, 40, 1),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(30),
-                  ),
+        color: Colors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(45),
+        ),
                 ),
               ),
-            )
-          ],
-        );
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(45),
+        topRight: Radius.circular(45),
+                ),
+                child: Image.asset(
+        coffeeImage,
+        width: 260,
+        
+        fit: BoxFit.contain,
+                ),
+              ),
+              Positioned(
+                bottom: 45,
+                left: 25,
+                child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            coffeeName,
+            style: TextStyle(
+                color: Color.fromRGBO(242, 174, 163, 1),
+                fontSize: 18,
+                fontWeight: FontWeight.w500),
+          ),
+          SizedBox(height: 10),
+          Text(
+            coffeeSubtext,
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 28,
+                wordSpacing: 1.4),
+          ),
+        ],
+                ),
+              ),
+              Positioned(
+                bottom: containerHeight / 90,
+                right: containerWidth / 10,
+               
+                child: Container(
+        child: Center(
+          child: RichText(
+            text: TextSpan(
+              children: <TextSpan>[
+                TextSpan(text:"₦",style:TextStyle(
+                    color: Color.fromRGBO(146, 144, 148,1)
+                ),
+                ),
+                TextSpan(
+                  text: coffeePrice,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold)
+                )
+              ]
+            ),
+          ),
+
+         
+        ),
+        width: 65,
+        height: 50,
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(37, 34, 40, 1),
+          borderRadius: BorderRadius.all(
+            Radius.circular(30),
+          ),
+        ),
+                ),
+              )
+            ],
+          );
       },
     );
 

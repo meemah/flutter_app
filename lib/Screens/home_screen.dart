@@ -10,7 +10,6 @@ import 'dart:convert';
 import 'package:flutterapp/json_model.dart';
 
 class HomeScreen extends StatefulWidget {
-
   static const route = "/home";
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -19,9 +18,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   PageController _pageController;
   static int currentItem = 0;
-  
-  List<Categories> categoriesList1 = [];
+  var _currentPaegeIndex = 0;
 
+  List<Categories> categoriesList1 = [];
 
   Future _loadDataAsString() async {
     return await rootBundle.loadString("coffee.json");
@@ -30,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future _loadCategories() async {
     String jsonString = await _loadDataAsString();
     final jsonResponse = json.decode(jsonString);
-    
+
     setState(() {
       categoriesList1 = new CategoriesList1.fromJson(jsonResponse).categories;
     });
@@ -40,9 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _loadCategories();
-    _pageController = PageController(viewportFraction: 0.75, initialPage: 0);
+    _pageController = PageController(
+      viewportFraction: 0.75,
+      initialPage: 0,
+    );
   }
 
+  static final Duration _animationDuration = Duration(milliseconds: 200);
+  double _defaultMargin = 0.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,30 +95,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: PageView.builder(
                       controller: _pageController,
                       itemCount: categoriesList1.length,
-                      
+                      onPageChanged: (currentPage) {
+                        //find the current index on page
+                        setState(() {
+                          _currentPaegeIndex = currentPage;
+                        });
+                      },
                       itemBuilder: (context, index) {
-                         
-                        Contents contents = categoriesList1
-                            [currentItem].contents[index];
-                            var name = categoriesList1[currentItem].name;
-                        
+                        Contents contents =
+                            categoriesList1[currentItem].contents[index];
+                        var name = categoriesList1[currentItem].name;
+
                         var subText = contents.name;
                         var image = contents.image;
                         var price = contents.price;
 
-                        
-
                         return GestureDetector(
-                            onTap: (){
-                              Navigator.pushNamed(context, DetailScreen.route, arguments:contents);
+                          onTap: () {
+                            Navigator.pushNamed(context, DetailScreen.route,
+                                arguments: contents);
+                          },
+                          child: AnimatedContainer(
+                            margin: EdgeInsets.symmetric(
+                                horizontal:
+                                    _currentPaegeIndex == index ? 30 : 0),
+                            onEnd: () {
+                              setState(() {
+                                _defaultMargin = 0;
+                              });
                             },
-
-                          
-                          child: CoffeCard(
-                              coffeeName: name,
-                              coffeeImage: image,
-                              coffeePrice: price,
-                              coffeeSubtext: subText),
+                            duration: _animationDuration,
+                            child: CoffeCard(
+                                coffeeName: name,
+                                coffeeImage: image,
+                                coffeePrice: price,
+                                coffeeSubtext: subText),
+                          ),
                         );
                       }),
                 ),
@@ -147,6 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Expanded(
                         child: Container(
+                          // alignment: FractionalOffset.bottomCenter,
                           width: MediaQuery.of(context).size.width,
                           height: 30.0,
                           child: ListView.builder(
@@ -155,21 +172,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                 return GestureDetector(
                                   onTap: () {
                                     setState(() {
+                                      //currentItem of the item selected on the listview,used to select items in pageview
                                       currentItem = index;
                                     });
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 15.0),
                                     child: Text(
-                                      
                                       categoriesList1[index].name,
                                       style: TextStyle(
-                                        
                                         fontWeight: currentItem == index
                                             ? FontWeight.w600
                                             : FontWeight.w200,
                                         fontSize:
-                                            currentItem == index ? 22 : 15,
+                                            currentItem == index ? 22 : 16,
                                         color: currentItem == index
                                             ? Colors.black
                                             : Colors.black38,
@@ -178,9 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 );
                               },
-                              itemCount: categoriesList1.length
-                             
-                              ),
+                              itemCount: categoriesList1.length),
                         ),
                       ),
                     ]),
